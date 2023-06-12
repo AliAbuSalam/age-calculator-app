@@ -16,12 +16,35 @@ main {
   border-radius: 25px 25px 150px 25px;
 }
 
-.input-container {
+.form-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin: 2rem;
+}
+.form-container .input-container {
   display: flex;
   flex-direction: column;
+  margin-right: 4rem;
 }
-.input-container input {
-  width: 20%;
+.form-container .input-container label {
+  font-family: "Poppins";
+  font-weight: 400;
+  color: hsl(0, 1%, 44%);
+  margin-bottom: 0.5rem;
+}
+.form-container .input-container input {
+  width: 100%;
+  font-size: 32px;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid hsl(0, 0%, 86%);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.form-container .input-container input:focus {
+  border-color: hsl(259, 100%, 65%);
 }
 
 /*# sourceMappingURL=styles.css.map */
