@@ -25,13 +25,14 @@ main {
   width: 60%;
   place-self: center;
   border-radius: 25px 25px 150px 25px;
+  box-sizing: border-box;
+  padding: 2rem;
 }
 
 .form-container {
   display: flex;
   flex-direction: row;
   width: 70%;
-  margin: 2rem;
 
   .input-container {
     display: flex;
@@ -60,4 +61,35 @@ main {
       border-color: $purple;
     }
   }
+}
+
+#button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+hr {
+  color: $smokeyGrey;
+  opacity: 15%;
+  width: 80%;
+  margin-left: 0;
+  margin-right: 0;
+  height: 0;
+}
+
+#form-button {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-image: url('../assets/images/icon-arrow.svg');
+  background-position: 50% 50%;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-color: $purple;
+  cursor: pointer;
+}
+
+#form-button:hover {
+  background-color: black;
 }

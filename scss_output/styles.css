@@ -47,4 +47,35 @@ main {
   border-color: hsl(259, 100%, 65%);
 }
 
+#button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+hr {
+  color: hsl(0, 1%, 44%);
+  opacity: 15%;
+  width: 80%;
+  margin-left: 0;
+  margin-right: 0;
+  height: 0;
+}
+
+#form-button {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-image: url("../assets/images/icon-arrow.svg");
+  background-position: 50% 50%;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-color: hsl(259, 100%, 65%);
+  cursor: pointer;
+}
+
+#form-button:hover {
+  background-color: black;
+}
+
 /*# sourceMappingURL=styles.css.map */
