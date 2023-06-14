@@ -9,6 +9,20 @@ $offBlack: hsl(0 ,0%, 8%);
 
 $font: 'Poppins';
 
+@mixin fontInit($url, $fontToInit: $font) {
+  font-family: $fontToInit;
+  src: url($url);
+}
+
+@font-face {
+  @include fontInit('../assets/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  @include fontInit('../assets/fonts/Poppins-Bold.ttf');
+  font-weight: 700;
+}
+
 body {
   margin: 0;
   padding: 0;
