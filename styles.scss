@@ -116,7 +116,12 @@ hr {
 
 #result {
   font-family: $font;
-  font-size: 72px;
+  font-size: 100px;
   font-weight: 800;
   font-style: italic;
+  line-height: 1.2;
+
+  span {
+    color: $purple;
+  }
 }
