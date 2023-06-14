@@ -7,6 +7,12 @@
   src: url("../assets/fonts/Poppins-Bold.ttf");
   font-weight: 700;
 }
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-ExtraBold.ttf");
+  font-weight: 800;
+  font-style: "italic";
+}
 body {
   margin: 0;
   padding: 0;
@@ -86,6 +92,13 @@ hr {
 
 #form-button:hover {
   background-color: black;
+}
+
+#result {
+  font-family: "Poppins";
+  font-size: 72px;
+  font-weight: 800;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=styles.css.map */

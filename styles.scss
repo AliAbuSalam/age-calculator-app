@@ -23,6 +23,12 @@ $font: 'Poppins';
   font-weight: 700;
 }
 
+@font-face {
+  @include fontInit('../assets/fonts/Poppins-ExtraBold.ttf');
+  font-weight: 800;
+  font-style: 'italic';
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -106,4 +112,11 @@ hr {
 
 #form-button:hover {
   background-color: black;
+}
+
+#result {
+  font-family: $font;
+  font-size: 72px;
+  font-weight: 800;
+  font-style: italic;
 }
