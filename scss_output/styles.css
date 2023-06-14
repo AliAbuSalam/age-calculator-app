@@ -26,7 +26,7 @@ main {
 
 .card {
   background-color: white;
-  width: 60%;
+  width: 50%;
   place-self: center;
   border-radius: 25px 25px 150px 25px;
   box-sizing: border-box;
