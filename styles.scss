@@ -65,6 +65,10 @@ main {
       color: $smokeyGrey;
       margin-bottom: 0.5rem;
     }
+
+    label.error {
+      color: $lightRed;
+    }
   
     input {
       width: 100%;
@@ -75,6 +79,10 @@ main {
       border: 2px solid $lightGrey;
       padding: 0.5rem 1rem;
       cursor: pointer;
+    }
+
+    input.error{
+      border-color: $lightRed;
     }
 
     input:focus {

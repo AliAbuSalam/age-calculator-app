@@ -49,6 +49,9 @@ main {
   color: hsl(0, 1%, 44%);
   margin-bottom: 0.5rem;
 }
+.form-container .input-container label.error {
+  color: hsl(0, 100%, 67%);
+}
 .form-container .input-container input {
   width: 100%;
   font-size: 32px;
@@ -58,6 +61,9 @@ main {
   border: 2px solid hsl(0, 0%, 86%);
   padding: 0.5rem 1rem;
   cursor: pointer;
+}
+.form-container .input-container input.error {
+  border-color: hsl(0, 100%, 67%);
 }
 .form-container .input-container input:focus {
   border-color: hsl(259, 100%, 65%);
