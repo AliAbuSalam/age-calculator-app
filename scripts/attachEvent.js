@@ -1,4 +1,4 @@
-import { filterNonNumber } from "./input.js";
+import { filterNonNumber } from "./form.js";
 
 const inputs = document.querySelectorAll('input');
 
