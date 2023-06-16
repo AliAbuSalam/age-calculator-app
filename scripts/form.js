@@ -2,39 +2,39 @@ export const filterNonNumber = ({ target }) => {
   target.value = target.value.replaceAll(/[^0-9]/g, '');
 };
 
-// const updateInputElement = (dayValidationObj, monthValidationObj, yearValidationObj) => {
-//   if(dayValidationObj.type){
-//     removeErrorClassOnInput('day');
-//   } else {
-//     addErrorClassOnInput('day', dayValidationObj.description);
-//   }
+const updateInputElement = (dayValidationObj, monthValidationObj, yearValidationObj) => {
+  if(dayValidationObj.type){
+    removeErrorClassOnInput('day');
+  } else {
+    addErrorClassOnInput('day', dayValidationObj.description);
+  }
 
-//   if(monthValidationObj.type){
-//     removeErrorClassOnInput('month');
-//   } else {
-//     addErrorClassOnInput('month', monthValidationObj.description);
-//   }
+  if(monthValidationObj.type){
+    removeErrorClassOnInput('month');
+  } else {
+    addErrorClassOnInput('month', monthValidationObj.description);
+  }
 
-//   if(yearValidationObj.type){
-//     removeErrorClassOnInput('year');
-//   } else {
-//     addErrorClassOnInput('year', yearValidationObj.description);
-//   }
-// }
+  if(yearValidationObj.type){
+    removeErrorClassOnInput('year');
+  } else {
+    addErrorClassOnInput('year', yearValidationObj.description);
+  }
+}
 
-// const addErrorClassOnInput = (inputName, description) => {
-//   const container = document.getElementById(`${inputName}-container`);
-//   container.childNodes.forEach(child => child.classList.add('error'));
+const addErrorClassOnInput = (inputName, description) => {
+  const container = document.getElementById(`${inputName}-container`);
+  container.childNodes.forEach(child => child.classList.add('error'));
 
-//   container.childNodes[2].innerText = description;
-// };
+  container.childNodes[2].innerText = description;
+};
 
-// const removeErrorClassOnInput = (inputName) => {
-//   const container = document.getElementById(`${inputName}-container`);
-//   container.childNodes.forEach(child => child.classList.remove('error'));
+const removeErrorClassOnInput = (inputName) => {
+  const container = document.getElementById(`${inputName}-container`);
+  container.childNodes.forEach(child => child.classList.remove('error'));
 
-//   container.childNodes[2].innerText = '';
-// }
+  container.childNodes[2].innerText = '';
+}
 
 export const handleSubmit = (event) => {
   event.preventDefault();
@@ -43,15 +43,17 @@ export const handleSubmit = (event) => {
   const monthInput = target.elements['month-input'];
   const yearInput = target.elements['year-input'];
 
-  console.log('dayInput: ', dayInput);
-  console.log('monthInput: ', monthInput);
-  console.log('yearInput: ', yearInput);
+  const monthValidationObj = isMonthValid(monthInput.value);
+  console.log('monthValidationObj: ', monthValidationObj);
 }
 
 const falseObject = (description) => ({ type: false, description });
 const trueObject = () => ({ type: true, description: ''});
 
 const isMonthValid = (value) => {
+  if(!value){
+    return fieldEmptyObj();
+  }
   const convertedValue = Number(value);
   if(convertedValue >= 1 && convertedValue <= 12){
     return trueObject();
@@ -60,8 +62,8 @@ const isMonthValid = (value) => {
 };
 
 const isDayValid = (dayValue, monthValue, yearValue) => {
-  if(dayValue < 1 || dayValue > 31){
-    return falseObject('Must be a valid day');
+  if(!dayValue){
+    return fieldEmptyObj();
   }
   const convertedDayValue = Number(dayValue);
   const convertedMonthValue = Number(monthValue);
@@ -103,8 +105,13 @@ const isDayValid = (dayValue, monthValue, yearValue) => {
 };
 
 const isYearValid = (yearValue) => {
+  if(!yearValue){
+    return fieldEmptyObj();
+  }
   const convertedYearValue = Number(yearValue);
   if(!convertedYearValue || convertedYearValue < 0){
     return falseObject('Must be a valid year');
   }
 }
+
+const fieldEmptyObj = () => ({ type: false, description: 'This field is required'});
