@@ -1,6 +1,40 @@
 export const filterNonNumber = ({ target }) => {
-  target.value = target.value.replace(/[^0-9]/, '');
+  target.value = target.value.replaceAll(/[^0-9]/g, '');
 };
+
+// const updateInputElement = (dayValidationObj, monthValidationObj, yearValidationObj) => {
+//   if(dayValidationObj.type){
+//     removeErrorClassOnInput('day');
+//   } else {
+//     addErrorClassOnInput('day', dayValidationObj.description);
+//   }
+
+//   if(monthValidationObj.type){
+//     removeErrorClassOnInput('month');
+//   } else {
+//     addErrorClassOnInput('month', monthValidationObj.description);
+//   }
+
+//   if(yearValidationObj.type){
+//     removeErrorClassOnInput('year');
+//   } else {
+//     addErrorClassOnInput('year', yearValidationObj.description);
+//   }
+// }
+
+// const addErrorClassOnInput = (inputName, description) => {
+//   const container = document.getElementById(`${inputName}-container`);
+//   container.childNodes.forEach(child => child.classList.add('error'));
+
+//   container.childNodes[2].innerText = description;
+// };
+
+// const removeErrorClassOnInput = (inputName) => {
+//   const container = document.getElementById(`${inputName}-container`);
+//   container.childNodes.forEach(child => child.classList.remove('error'));
+
+//   container.childNodes[2].innerText = '';
+// }
 
 export const handleSubmit = (event) => {
   event.preventDefault();
