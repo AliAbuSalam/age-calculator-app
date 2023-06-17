@@ -102,6 +102,7 @@ hr {
   background-size: 50% 50%;
   background-repeat: no-repeat;
   background-color: hsl(259, 100%, 65%);
+  border: none;
   cursor: pointer;
 }
 
