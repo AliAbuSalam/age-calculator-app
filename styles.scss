@@ -57,7 +57,9 @@ main {
   .input-container {
     display: flex;
     flex-direction: column;
-    margin-right: 4rem;
+    margin-right: 1.5rem;
+    width: 33%;
+    
 
     label {
       font-family: $font;
@@ -67,6 +69,12 @@ main {
     }
 
     label.error {
+      color: $lightRed;
+    }
+
+    label.description {
+      width: 100%;
+      font-size: 12px;
       color: $lightRed;
     }
   
@@ -79,6 +87,7 @@ main {
       border: 2px solid $lightGrey;
       padding: 0.5rem 1rem;
       cursor: pointer;
+      box-sizing: border-box;
     }
 
     input.error{
