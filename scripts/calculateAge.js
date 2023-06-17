@@ -1,5 +1,4 @@
 export const calculateAge = ({ day, month, year }) => {
-  console.log('day, month, year: ', day, month, year);
   const today = new Date();
 
   const todayDate = {
@@ -7,7 +6,6 @@ export const calculateAge = ({ day, month, year }) => {
     month: today.getMonth() + 1,
     year: today.getFullYear()
   };
-  console.log('todayDate: ', todayDate);
 
   const difference = {
     day: todayDate.day - day,
@@ -15,19 +13,9 @@ export const calculateAge = ({ day, month, year }) => {
     year: todayDate.year - year
   };
 
-  console.log('difference: ', difference);
-
-  if(difference.day >= 0 && difference.month >=0){
-    return difference;
-  }
-
   if(difference.day < 0){
-    console.log('day negative!');
-    console.log('difference.day: ', difference.day);
-    difference.day = difference.day + convertMOnthToDays(todayDate.month);
+    difference.day = difference.day + convertMonthToDays(todayDate.month);
     --difference.month
-
-    console.log('difference: ', difference);
   }
 
   if(difference.month < 0){
@@ -38,7 +26,7 @@ export const calculateAge = ({ day, month, year }) => {
   return difference;
 }
 
-const convertMOnthToDays = (monthValue, yearValue) => {
+const convertMonthToDays = (monthValue, yearValue) => {
   if(monthValue === 2 && yearValue % 4 === 0){
     return 29;
   } else if (monthValue === 2){
