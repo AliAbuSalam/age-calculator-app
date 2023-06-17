@@ -14,7 +14,6 @@ const addErrorClassOnInput = (inputName, description) => {
   const container = document.getElementById(`${inputName}-container`);
   container.childNodes.forEach(child => child.classList?.add('error'));
 
-  console.log(container.children);
   container.children[2].innerText = description;
 };
 
@@ -22,7 +21,7 @@ const removeErrorClassOnInput = (inputName) => {
   const container = document.getElementById(`${inputName}-container`);
   container.childNodes.forEach(child => child.classList?.remove('error'));
 
-  container.children[2].innerText = '';
+  container.children[2].innerText = '.';
 }
 
 export const handleSubmit = (event) => {

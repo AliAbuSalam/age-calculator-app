@@ -68,14 +68,16 @@ main {
       margin-bottom: 0.5rem;
     }
 
-    label.error {
-      color: $lightRed;
-    }
-
     label.description {
       width: 100%;
       font-size: 12px;
       color: $lightRed;
+      visibility: hidden;
+    }
+
+    label.error {
+      color: $lightRed;
+      visibility: visible;
     }
   
     input {
