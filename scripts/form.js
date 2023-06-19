@@ -1,4 +1,5 @@
 import { calculateAge } from "./calculateAge.js";
+import { updateResultDisplay } from "./updateResultDisplay.js";
 
 export const filterNonNumber = ({ target }) => {
   target.value = target.value.replaceAll(/[^0-9]/g, '');
@@ -42,13 +43,12 @@ export const handleSubmit = (event) => {
   updateInputElement('year', yearValidationObj);
 
   const age = calculateAge({
-    day: Number(dayInput.value),
+    year: Number(yearInput.value),
     month: Number(monthInput.value),
-    year: Number(yearInput.value)
+    day: Number(dayInput.value),
   });
-  console.log('year: ', age.year);
-  console.log('month: ', age.month);
-  console.log('day: ', age.day);
+
+  updateResultDisplay(age);
 }
 
 const falseObject = (description) => ({ type: false, description });
