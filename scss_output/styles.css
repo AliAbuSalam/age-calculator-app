@@ -121,13 +121,12 @@ hr {
   color: hsl(259, 100%, 65%);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   html {
-    font-size: 7px;
+    font-size: 8px;
   }
   .card {
     width: 90%;
-    box-sizing: border-box;
     padding: 3rem;
     padding-top: 5rem;
     padding-right: 2rem;
@@ -151,6 +150,17 @@ hr {
   }
   .card label:not(.description) {
     font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 7px;
+  }
+  .card {
+    width: 90%;
+  }
+  .card .form-container {
+    width: 100%;
   }
 }
 
