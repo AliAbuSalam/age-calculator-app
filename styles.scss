@@ -82,7 +82,7 @@ main {
   
     input {
       width: 100%;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 700;
       outline: none;
       border-radius: 5px;
@@ -118,8 +118,8 @@ hr {
 }
 
 #form-button {
-  width: 90px;
-  height: 90px;
+  width: 5.625rem;
+  height: 5.625rem;
   border-radius: 50%;
   background-image: url('../assets/images/icon-arrow.svg');
   background-position: 50% 50%;
@@ -136,7 +136,7 @@ hr {
 
 #result {
   font-family: $font;
-  font-size: 100px;
+  font-size: 6.25rem;
   font-weight: 800;
   font-style: italic;
   line-height: 1.2;
@@ -144,4 +144,43 @@ hr {
   span {
     color: $purple;
   }
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 7px;
+  }
+
+  .card {
+    width: 90%;
+    box-sizing: border-box;
+    padding: 3rem;
+    padding-top: 5rem;
+    padding-right: 2rem;
+    margin: 0;
+
+    .form-container {
+      width: 100%;
+    }
+    
+    #button-container {
+      display: grid;
+      margin-bottom: 3rem;
+    }
+
+    #form-button {
+      place-self: center;
+      width: 7rem;
+      height: 7rem;
+    }
+
+    hr, #form-button {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    label:not(.description) {
+      font-size: 1.5rem;
+    }
+  }  
 }
