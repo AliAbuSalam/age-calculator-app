@@ -14,6 +14,21 @@ $font: 'Poppins';
   src: url($url);
 }
 
+@mixin centerFormButton {
+  #button-container {
+    display: grid;
+  }
+
+  hr, #form-button {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  #form-button {
+    place-self: center;
+  }
+}
+
 @font-face {
   @include fontInit('../assets/fonts/Poppins-Regular.ttf');
 }
@@ -146,36 +161,44 @@ hr {
   }
 }
 
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .card {
+    width: 90%;
+  }
+
+  .form-container {
+    width: 100%
+  }
+
+  @include centerFormButton;
+
+
+}
+
 @media screen and (max-width: 500px) {
   html {
     font-size: 8px;
   }
 
   .card {
-    width: 90%;
     padding: 3rem;
     padding-top: 5rem;
     padding-right: 2rem;
     margin: 0;
-
-    .form-container {
-      width: 100%;
-    }
     
     #button-container {
-      display: grid;
       margin-bottom: 3rem;
     }
 
     #form-button {
-      place-self: center;
       width: 7rem;
       height: 7rem;
-    }
-
-    hr, #form-button {
-      grid-row: 1;
-      grid-column: 1;
     }
 
     label:not(.description) {
@@ -187,13 +210,5 @@ hr {
 @media screen and (max-width: 400px) {
   html {
     font-size: 7px;
-  }
-
-  .card {
-    width: 90%;
-
-    .form-container {
-      width: 100%;
-    }
   }
 }

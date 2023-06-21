@@ -121,32 +121,45 @@ hr {
   color: hsl(259, 100%, 65%);
 }
 
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .card {
+    width: 90%;
+  }
+  .form-container {
+    width: 100%;
+  }
+  #button-container {
+    display: grid;
+  }
+  hr, #form-button {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  #form-button {
+    place-self: center;
+  }
+}
 @media screen and (max-width: 500px) {
   html {
     font-size: 8px;
   }
   .card {
-    width: 90%;
     padding: 3rem;
     padding-top: 5rem;
     padding-right: 2rem;
     margin: 0;
   }
-  .card .form-container {
-    width: 100%;
-  }
   .card #button-container {
-    display: grid;
     margin-bottom: 3rem;
   }
   .card #form-button {
-    place-self: center;
     width: 7rem;
     height: 7rem;
-  }
-  .card hr, .card #form-button {
-    grid-row: 1;
-    grid-column: 1;
   }
   .card label:not(.description) {
     font-size: 1.5rem;
@@ -155,12 +168,6 @@ hr {
 @media screen and (max-width: 400px) {
   html {
     font-size: 7px;
-  }
-  .card {
-    width: 90%;
-  }
-  .card .form-container {
-    width: 100%;
   }
 }
 
