@@ -4,3 +4,8 @@ export const updateResultDisplay = (resultObj) => {
     spanElement.innerText = resultObj[prop];
   }
 };
+
+export const resetResultDisplay = () => {
+  const spanElements = document.querySelectorAll('span');
+  spanElements.forEach(el => el.innerText = '- -');
+}

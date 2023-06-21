@@ -1,5 +1,5 @@
 import { calculateAge } from "./calculateAge.js";
-import { updateResultDisplay } from "./updateResultDisplay.js";
+import { updateResultDisplay, resetResultDisplay } from "./updateResultDisplay.js";
 
 export const filterNonNumber = ({ target }) => {
   target.value = target.value.replaceAll(/[^0-9]/g, '');
@@ -45,6 +45,7 @@ export const handleSubmit = (event) => {
   const validationObjResultSum = [monthValidationObj,yearValidationObj,dayValidationObj].map(obj => obj.type);
 
   if(validationObjResultSum.includes(false)){
+    resetResultDisplay();
     return;
   }
 
