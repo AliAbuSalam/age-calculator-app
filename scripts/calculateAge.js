@@ -1,4 +1,7 @@
 export const calculateAge = ({ day, month, year }) => {
+  if(!day || !month || !year){
+    return;
+  }
   const today = new Date();
 
   const todayDate = {
