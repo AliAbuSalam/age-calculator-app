@@ -42,6 +42,12 @@ export const handleSubmit = (event) => {
   updateInputElement('month', monthValidationObj);
   updateInputElement('year', yearValidationObj);
 
+  const validationObjResultSum = [monthValidationObj,yearValidationObj,dayValidationObj].map(obj => obj.type);
+
+  if(validationObjResultSum.includes(false)){
+    return;
+  }
+
   const age = calculateAge({
     year: Number(yearInput.value),
     month: Number(monthInput.value),
