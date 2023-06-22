@@ -129,6 +129,9 @@ footer .absolutePosition {
   right: 0;
   margin: auto;
 }
+footer .hidden {
+  visibility: hidden;
+}
 footer .attribution a {
   color: hsl(228, 45%, 44%);
 }
