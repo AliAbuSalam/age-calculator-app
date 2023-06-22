@@ -48,10 +48,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $offWhite;
-}
-
-main {
-  height: 98vh;
+  height: 100vh;
   display: grid;
 }
 
@@ -158,6 +155,25 @@ hr {
 
   span {
     color: $purple;
+  }
+}
+
+footer {
+  .attribution { 
+    font-size: 11px; 
+    text-align: center; 
+  }
+
+  .absolutePosition {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .attribution a {
+     color: hsl(228, 45%, 44%); 
   }
 }
 
