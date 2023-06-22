@@ -121,6 +121,7 @@ hr {
 footer .attribution {
   font-size: 11px;
   text-align: center;
+  margin-top: 2rem;
 }
 footer .absolutePosition {
   position: absolute;
@@ -128,6 +129,7 @@ footer .absolutePosition {
   left: 0;
   right: 0;
   margin: auto;
+  margin-top: 0;
 }
 footer .hidden {
   visibility: hidden;
