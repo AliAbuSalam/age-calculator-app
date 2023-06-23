@@ -33,16 +33,37 @@ export const handleSubmit = (event) => {
   const dayInput = target.elements['day-input'];
   const monthInput = target.elements['month-input'];
   const yearInput = target.elements['year-input'];
+  const today = new Date();
 
-  const monthValidationObj = isMonthValid(monthInput.value);
-  const yearValidationObj = isYearValid(yearInput.value);
-  const dayValidationObj = isDayValid(dayInput.value, monthInput.value, yearInput.value);
+  let monthValidity = isMonthValid(monthInput.value);
+  let yearValidity = isYearValid(yearInput.value, today);
+  let dayValidity = isDayValid(dayInput.value, monthInput.value, yearInput.value);
 
-  updateInputElement('day', dayValidationObj);
-  updateInputElement('month', monthValidationObj);
-  updateInputElement('year', yearValidationObj);
 
-  const validationObjResultSum = [monthValidationObj,yearValidationObj,dayValidationObj].map(obj => obj.type);
+  const generateResultSum = (monthValidity, yearValidity, dayValidity) => [monthValidity, yearValidity, dayValidity].map(obj => obj.type); 
+  let validationObjResultSum = generateResultSum(monthValidity, yearValidity, dayValidity);
+
+  const validationObjHasError = validationObjResultSum.includes(false);
+
+  if(!validationObjHasError){
+    const {
+      monthValidationObj,
+      yearValidationObj,
+      dayValidationObj,
+    } = checkWhetherDateIsInThePast(yearValidity, monthValidity, dayValidity, today);
+
+    monthValidity = monthValidationObj;
+    yearValidity = yearValidationObj;
+    dayValidity = dayValidationObj;
+
+    validationObjResultSum = validationObjResultSum = generateResultSum(monthValidity, yearValidity, dayValidity);
+  }
+
+
+  updateInputElement('day',  dayValidity);
+  updateInputElement('month', monthValidity);
+  updateInputElement('year', yearValidity);
+
 
   if(validationObjResultSum.includes(false)){
     resetResultDisplay();
@@ -53,13 +74,41 @@ export const handleSubmit = (event) => {
     year: Number(yearInput.value),
     month: Number(monthInput.value),
     day: Number(dayInput.value),
+    today,
   });
 
   updateResultDisplay(age);
 }
 
+const checkWhetherDateIsInThePast = (yearObj, monthObj, dayObj, today) => {
+  
+  const generateFalseReturnObj = () => generateReturnObj(falseObject(''), falseObject(''), falseObject('Must be in the past'));
+  const generateReturnObj = (yearReturnObj, monthReturnObj, dayReturnObj) => ({ 
+    yearValidationObj: yearReturnObj,
+    monthValidationObj: monthReturnObj,
+    dayValidationObj: dayReturnObj
+  });
+
+  if(yearObj.value < today.getFullYear()){
+    return generateReturnObj(yearObj, monthObj, dayObj)
+  }
+
+  if(yearObj.value === today.getFullYear()){
+    if(monthObj.value > today.getMonth()+1){
+      return generateFalseReturnObj();
+    }
+    if(monthObj.value === today.getMonth()+1){
+      if(dayObj.value > today.getDate()){
+        return generateFalseReturnObj();
+      }
+    }
+  }
+
+  return generateReturnObj(yearObj, monthObj, dayObj);
+}
+
 const falseObject = (description) => ({ type: false, description });
-const trueObject = () => ({ type: true, description: ''});
+const trueObject = (value) => ({ type: true, description: '', value});
 const fieldEmptyObj = () => ({ type: false, description: 'This field is required'});
 
 const isMonthValid = (value) => {
@@ -68,7 +117,7 @@ const isMonthValid = (value) => {
   }
   const convertedValue = Number(value);
   if(convertedValue >= 1 && convertedValue <= 12){
-    return trueObject();
+    return trueObject(convertedValue);
   }
   return falseObject('Must be a valid month');
 };
@@ -88,7 +137,7 @@ const isDayValid = (rawDayValue, rawMonthValue, rawYearValue) => {
   if(!Number.isInteger(monthValue) || 
       !Number.isInteger(yearValue)
     ){
-    return trueObject('');
+    return trueObject(dayValue);
   }
  
   /* --------------- Logic for february -----------------------*/
@@ -96,13 +145,13 @@ const isDayValid = (rawDayValue, rawMonthValue, rawYearValue) => {
     if(dayValue > 29){
       return falseObject('Must be a valid date');
     } else if(dayValue >= 1 || dayValue <= 29){
-      return trueObject();
+      return trueObject(dayValue);
     }
   } else if(monthValue === 2 && yearValue % 4 !== 0){//means NOT a leap year
     if(dayValue > 28){
       return falseObject('Must be a valid date');
     } else if(dayValue >= 1 && dayValue <= 28){
-      return trueObject();
+      return trueObject(dayValue);
     }
   }
   /* -----------------------------------------------------------*/
@@ -112,12 +161,12 @@ const isDayValid = (rawDayValue, rawMonthValue, rawYearValue) => {
       if(dayValue > 30){
         return falseObject('Must be a valid date');
       }
-    default: return trueObject();
+    default: return trueObject(dayValue);
   }
   /*--------------------------------------------------------------------*/
 };
 
-const isYearValid = (yearValue) => {
+const isYearValid = (yearValue, today) => {
   if(!yearValue){
     return fieldEmptyObj();
   }
@@ -126,7 +175,7 @@ const isYearValid = (yearValue) => {
     return falseObject('Must be a valid year');
   }
 
-  const currentYear = new Date().getFullYear();
+  const currentYear = today.getFullYear();
   if(!currentYear){
     return falseObject('Error getting current year')
   }
@@ -134,6 +183,6 @@ const isYearValid = (yearValue) => {
   if(currentYear - convertedYearValue < 0){
     return falseObject('Must be in the past');
   }
-  return trueObject();
+  return trueObject(convertedYearValue);
 }
 
