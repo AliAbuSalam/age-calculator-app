@@ -1,8 +1,7 @@
-export const calculateAge = ({ day, month, year }) => {
+export const calculateAge = ({ day, month, year, today }) => {
   if(!day || !month || !year){
     return;
   }
-  const today = new Date();
 
   const todayDate = {
     day: today.getDate(),
